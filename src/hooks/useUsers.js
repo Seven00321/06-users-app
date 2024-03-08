@@ -1,6 +1,7 @@
 import { useReducer, useState } from "react";
 import { usersReducer } from "../reducers/usersReducer";
 import Swal from "sweetalert2";
+import { Navigate } from "react-router-dom";
 
 {/* Definiendo Usuarios*/}
 const initialUsers = [
@@ -79,6 +80,7 @@ export const useUsers = () =>{
             }
         });
         handlerCloseForm();
+        Navigate('/users');
     }
 
     const handlerSelectedForm = (user) => {
