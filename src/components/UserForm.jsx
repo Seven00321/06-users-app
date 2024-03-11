@@ -41,6 +41,17 @@ export const UserForm = ({ handlerCloseForm, userSelected, handlerAddUser, initi
 
             return;
         }
+
+        if(!email.includes('@')){
+            {/* Sweet Alert - Alerta*/}
+            Swal.fire({
+                title: "Error de validación",
+                text: "El email debe ser valido, incluir un @!",
+                icon: "error"
+            });
+
+            return;
+        }
         //console.log(userForm);
 
         // Guardar el userForm en el listado de usuarios
@@ -79,7 +90,7 @@ export const UserForm = ({ handlerCloseForm, userSelected, handlerAddUser, initi
 
                 {/*Input email */}
                 <input 
-                    type="email"  
+                    type="text"  
                     className="form-control my-3 w-75"
                     placeholder="E-mail"
                     name="email"
@@ -104,13 +115,19 @@ export const UserForm = ({ handlerCloseForm, userSelected, handlerAddUser, initi
                 </button>
 
                 {/*Button Cerrar */}
-                <button 
-                    className="btn btn-primary mx-2"
-                    type="button"
-                    onClick={()=>onCloseForm()}
-                >
-                    Cerrar
-                </button>
+
+                { !handlerCloseForm || 
+                    <button 
+                        className="btn btn-primary mx-2"
+                        type="button"
+                        onClick={()=>onCloseForm()}
+                    >
+                        Cerrar
+                    </button>
+                
+                }
+
+                
 
             </form>
             
