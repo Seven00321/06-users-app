@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { UserForm } from "./UserForm";
+import { UserContext } from "../context/UserContext";
 
-export const UserModalForm = ({userSelected, initialUserForm, handlerAddUser, handlerCloseForm}) => {
+export const UserModalForm = () => {
+
+    const { userSelected, handlerCloseForm } = useContext(UserContext);
+
     return (
         <div className="abrir-modal animacion fadeIn">
             {/*Ventana Modal*/}
@@ -18,8 +22,6 @@ export const UserModalForm = ({userSelected, initialUserForm, handlerAddUser, ha
                         <div className="modal-body">
                             <UserForm
                                 userSelected={userSelected}
-                                initialUserForm={initialUserForm}
-                                handlerAddUser={handlerAddUser}
                                 handlerCloseForm={handlerCloseForm}
                             />
                         </div>

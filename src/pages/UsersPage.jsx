@@ -1,34 +1,30 @@
+import { useContext } from "react";
 import { UserModalForm } from "../components/UserModalForm";
 import { UsersList } from "../components/UsersList";
+import { UserContext } from "../context/UserContext";
 //import { useUsers } from "../hooks/useUsers";
 
-export const UsersPage = ({
+// export const UsersPage = ({
+//         users,
+//         userSelected,
+//         initialUserForm,
+//         visibleForm,
+    
+//         handlerAddUser,
+//         handlerRemoveUser,
+//         handlerSelectedForm,
+//         handlerOpenForm,
+//         handlerCloseForm,
+
+//     }) => {
+
+export const UsersPage = () => {    
+  
+    const {
         users,
-        userSelected,
-        initialUserForm,
         visibleForm,
-    
-        handlerAddUser,
-        handlerRemoveUser,
-        handlerSelectedForm,
         handlerOpenForm,
-        handlerCloseForm,
-
-    }) => {
-
-    // const {
-    //     users,
-    //     userSelected,
-    //     initialUserForm,
-    //     visibleForm,
-    
-    //     handlerAddUser,
-    //     handlerRemoveUser,
-    //     handlerSelectedForm,
-    //     handlerOpenForm,
-    //     handlerCloseForm,
-
-    // } = useUsers();
+    } = useContext(UserContext);
 
     return (
         <>
@@ -36,10 +32,7 @@ export const UsersPage = ({
         
             {!visibleForm || 
                 <UserModalForm
-                    userSelected={userSelected}
-                    initialUserForm={initialUserForm}
-                    handlerAddUser={handlerAddUser}
-                    handlerCloseForm={handlerCloseForm}
+                    
                 />
             }
 
@@ -67,11 +60,7 @@ export const UsersPage = ({
                         
                         {users.length === 0 
                             ? <div className="alert alert-warning">No hay Usuarios en el Sistema!</div>
-                            : <UsersList 
-                                handlerSelectedForm={handlerSelectedForm}
-                                handlerRemoveUser={ handlerRemoveUser }
-                                users={ users }
-                            />
+                            : <UsersList/>
                         }
                     </div>
                 </div>
